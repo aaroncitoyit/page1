@@ -20,6 +20,22 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
+        // Cambiar color del navMenu en modo responsive
+        function updateNavMenuColor() {
+            const navUl = document.querySelector('nav ul');
+            if (window.innerWidth <= 768) {
+                // En modo responsive, agregar clase para cambiar color
+                navUl.classList.add('responsive-menu');
+            } else {
+                // En escritorio, remover la clase
+                navUl.classList.remove('responsive-menu');
+            }
+        }
+
+        // Ejecutar al cargar y al redimensionar
+        updateNavMenuColor();
+        window.addEventListener('resize', updateNavMenuColor);
+
         // Testimonios rotatorios
         const testimonials = document.querySelectorAll('.testimonial');
         let currentTestimonial = 0;
@@ -87,6 +103,15 @@ document.addEventListener('DOMContentLoaded', function() {
         if (contactSection) {
             const contactElements = contactSection.querySelectorAll('h2, .contact-info, .contact-form, .contact-item');
             contactElements.forEach(element => {
+                observer.observe(element);
+            });
+        }
+
+        // Observar elementos de hero
+        const heroSection = document.querySelector('.hero');
+        if (heroSection) {
+            const heroElements = heroSection.querySelectorAll('h1, p, .btn');
+            heroElements.forEach(element => {
                 observer.observe(element);
             });
         }
