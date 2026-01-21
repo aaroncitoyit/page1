@@ -5,564 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desarrollo Web | StructureCode</title>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Variables de colores y estilos */
-        :root {
-            --primary-color: #254c82;
-            --secondary-color: #2d5aa0;
-            --accent-color: #f0b52d;
-            --light-color: #f8f9fa;
-            --dark-color: #333;
-            --gray-color: #6c757d;
-            --transition: all 0.3s ease;
-        }
-
-        /* Reset y estilos generales */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--dark-color);
-            background-color: #fff;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-
-        section {
-            padding: 80px 0;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4 {
-            color: var(--primary-color);
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-        }
-
-        h1 {
-            font-size: 2.8rem;
-        }
-
-        h2 {
-            font-size: 2.2rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        h2:after {
-            content: '';
-            position: absolute;
-            width: 80px;
-            height: 4px;
-            background-color: var(--accent-color);
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        h3 {
-            font-size: 1.5rem;
-        }
-
-        p {
-            margin-bottom: 1rem;
-            font-size: 1.05rem;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-            border: 2px solid var(--primary-color);
-        }
-
-        .btn:hover {
-            background-color: var(--secondary-color);
-            border-color: var(--secondary-color);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn-accent {
-            background-color: var(--accent-color);
-            border-color: var(--accent-color);
-            color: var(--dark-color);
-        }
-
-        .btn-accent:hover {
-            background-color: #e0a326;
-            border-color: #e0a326;
-        }
-
-        /* Header y navegación */
-        header {
-            background-color: white;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        .logo span {
-            color: var(--accent-color);
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav ul li {
-            margin-left: 30px;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: var(--dark-color);
-            font-weight: 600;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        nav ul li a:hover {
-            color: var(--primary-color);
-        }
-
-        nav ul li a:after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent-color);
-            bottom: -5px;
-            left: 0;
-            transition: var(--transition);
-        }
-
-        nav ul li a:hover:after {
-            width: 100%;
-        }
-
-        .menu-toggle {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--primary-color);
-        }
-
-        /* Hero section */
-        .hero {
-            background: linear-gradient(rgba(26, 54, 93, 0.9), rgba(26, 54, 93, 0.9)), url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            text-align: center;
-            padding: 160px 0 100px;
-            margin-top: 70px;
-        }
-
-        .hero h1 {
-            color: white;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 2rem;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        /* Servicios */
-        .services {
-            background-color: var(--light-color);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .service-card {
-            background-color: white;
-            border-radius: 8px;
-            padding: 30px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-            text-align: center;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .service-icon {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-        }
-
-        /* Sobre nosotros */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .about-image {
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* Equipo */
-        .team {
-            background-color: var(--light-color);
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .team-member {
-            background-color: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-            text-align: center;
-        }
-
-        .team-member:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .member-img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-
-        }
-
-        .member-info {
-            padding: 25px 20px;
-        }
-
-        .member-role {
-            color: var(--secondary-color);
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        /* Testimonios */
-        .testimonial-slider {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .testimonial {
-            background-color: var(--light-color);
-            padding: 40px;
-            border-radius: 8px;
-            margin-bottom: 30px;
-            position: relative;
-        }
-
-        .testimonial:before {
-            content: '"';
-            font-size: 5rem;
-            color: var(--accent-color);
-            position: absolute;
-            top: -10px;
-            left: 20px;
-            font-family: Georgia, serif;
-        }
-
-        .client-info {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .client-img {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-right: 15px;
-        }
-
-        /* Contacto */
-        .contact {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        .contact h2 {
-            color: white;
-        }
-
-        .contact h2:after {
-            background-color: white;
-        }
-
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-        }
-
-        .contact-info h3 {
-            color: white;
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .contact-icon {
-            font-size: 1.2rem;
-            color: var(--accent-color);
-            margin-right: 15px;
-            width: 30px;
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 12px 15px;
-            margin-bottom: 20px;
-            border-radius: 4px;
-            border: none;
-            font-family: inherit;
-            font-size: 1rem;
-        }
-
-        .contact-form textarea {
-            height: 150px;
-            resize: vertical;
-        }
-
-        /* Footer */
-        footer {
-            background-color: #0f2b50;
-            color: white;
-            padding: 50px 0 20px;
-        }
-
-        .footer-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: white;
-            margin-bottom: 1rem;
-        }
-
-        .footer-logo span {
-            color: var(--accent-color);
-        }
-
-        .footer-about p {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .footer-links h4,
-        .footer-newsletter h4 {
-            color: white;
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
-        }
-
-        .footer-links ul {
-            list-style: none;
-        }
-
-        .footer-links ul li {
-            margin-bottom: 10px;
-        }
-
-        .footer-links ul li a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .footer-links ul li a:hover {
-            color: var(--accent-color);
-            padding-left: 5px;
-        }
-
-        .footer-newsletter p {
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 20px;
-        }
-
-        .newsletter-form {
-            display: flex;
-        }
-
-        .newsletter-form input {
-            flex-grow: 1;
-            padding: 12px 15px;
-            border: none;
-            border-radius: 4px 0 0 4px;
-        }
-
-        .newsletter-form button {
-            background-color: var(--accent-color);
-            color: var(--dark-color);
-            border: none;
-            padding: 0 20px;
-            border-radius: 0 4px 4px 0;
-            cursor: pointer;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-
-        .newsletter-form button:hover {
-            background-color: #e0a326;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 992px) {
-            h1 {
-                font-size: 2.4rem;
-            }
-
-            h2 {
-                font-size: 1.8rem;
-            }
-
-            .about-content,
-            .contact-container {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-
-            nav ul {
-                position: fixed;
-                top: 70px;
-                left: -100%;
-                width: 100%;
-                flex-direction: column;
-                background-color: white;
-                text-align: center;
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-                transition: var(--transition);
-                padding: 20px 0;
-            }
-
-            nav ul.active {
-                left: 0;
-            }
-
-            nav ul li {
-                margin: 15px 0;
-            }
-
-            .hero {
-                padding: 140px 0 80px;
-            }
-
-            section {
-                padding: 60px 0;
-            }
-        }
-
-        @media (max-width: 576px) {
-            h1 {
-                font-size: 2rem;
-            }
-
-            h2 {
-                font-size: 1.6rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .testimonial {
-                padding: 30px 20px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="./assets/css/style.css">
+  
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+  
 </head>
 
 <body>
@@ -683,7 +134,7 @@
             <h2>Nuestro Equipo</h2>
             <div class="team-grid">
                 <div class="team-member">
-                    <img src="AARONCITO.webp" alt="María González" class="member-img">
+                    <img src="/img/AARONCITO.webp" alt="María González" class="member-img">
                     <div class="member-info">
                         <h3>MACEDO HUANSI AARON</h3>
                         <p class="member-role">Desarrollador Web</p>
@@ -694,7 +145,7 @@
                 </div>
 
                 <div class="team-member">
-                    <img src="CHARLIE.webp" alt="Carlos Rodríguez" class="member-img">
+                    <img src="/img/CHARLIE.webp" alt="Carlos Rodríguez" class="member-img">
                     <div class="member-info">
                         <h3>HUAMAN VIDARTE CHARLIE</h3>
                         <p class="member-role">Director de Operaciones</p>
@@ -706,7 +157,7 @@
                 </div>
 
                 <div class="team-member">
-                    <img src="FERNANDO.webp" alt="Ana Martínez" class="member-img">
+                    <img src="/img/FERNANDO.webp" alt="Ana Martínez" class="member-img">
                     <div class="member-info">
                         <h3>HUALLANCA ESPINOZA FERNANDO</h3>
                         <p class="member-role">Ingeniero de software</p>
@@ -726,10 +177,8 @@
             <h2>Contáctanos</h2>
             <div class="contact-container">
                 <div class="contact-info">
-                    <h3>Hablemos sobre su proyecto</h3>
-                    <p>Estamos listos para colaborar con su organización y desarrollar soluciones a medida que impulsen
-                        su crecimiento y rentabilidad.</p>
-
+                    <h3>Hablemos sobre tu proyecto</h3>
+                    <p>Estamos listos para colaborar con tu organización y desarrollar soluciones a medida que impulsen tu crecimiento y rentabilidad. Nuestro equipo te responderá en las próximas 24 horas.</p>
 
                     <div class="contact-item">
                         <div class="contact-icon">
@@ -747,24 +196,54 @@
                         </div>
                         <div>
                             <h4>Email</h4>
-                            <p>sctucturecode426@gmail.com</p>
+                            <p>structurecode426@gmail.com</p>
                         </div>
                     </div>
-                </div>
 
+                    <!-- <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Ubicación</h4>
+                            <p>Perú</p>
+                        </div>
+                    </div> -->
+                </div>
                 <div class="contact-form">
                     <form id="formContacto">
-                        <input type="text" placeholder="Nombre completo" required>
-                        <input type="email" placeholder="Correo electrónico" required>
-                        <input type="text" placeholder="Empresa">
-                        <input type="text" placeholder="Asunto" required>
-                        <textarea placeholder="Mensaje" required></textarea>
+                        <div class="form-group">
+                            <input type="text" name="nombre" placeholder="Tu nombre completo*" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Tu correo electrónico*" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="empresa" placeholder="Tu empresa*" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="asunto" placeholder="Asunto del mensaje*" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="mensaje" placeholder="Cuéntanos más sobre tu proyecto*" required></textarea>
+                        </div>
                         <button type="submit" class="btn btn-accent">Enviar mensaje</button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Modal Flotante -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <div class="modal-icon" id="modalIcon"></div>
+            <h2 id="modalTitle"></h2>
+            <p id="modalMessage"></p>
+            <button class="modal-btn" id="modalBtn">Aceptar</button>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -794,75 +273,8 @@
         </div>
     </footer>
 
-    <script>
-        // Menú móvil
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
-
-        menuToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            menuToggle.innerHTML = navMenu.classList.contains('active') ?
-                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-        });
-
-        // Cerrar menú al hacer clic en un enlace
-        const navLinks = document.querySelectorAll('nav ul li a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-            });
-        });
-
-        // Testimonios rotatorios
-        const testimonials = document.querySelectorAll('.testimonial');
-        let currentTestimonial = 0;
-
-        function rotateTestimonials() {
-            testimonials.forEach((testimonial, index) => {
-                testimonial.style.display = index === currentTestimonial ? 'block' : 'none';
-            });
-
-            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-        }
-
-        // Cambiar testimonial cada 5 segundos
-        setInterval(rotateTestimonials, 5000);
-
-        // Manejo del formulario de contacto
-        const contactForm = document.getElementById('formContacto');
-        contactForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-            alert('¡Gracias por su mensaje! Nos pondremos en contacto con usted en un plazo de 24-48 horas.');
-            contactForm.reset();
-        });
-
-        // Manejo del formulario de newsletter
-        const newsletterForm = document.querySelector('.newsletter-form');
-        newsletterForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-            alert('¡Gracias por suscribirse a nuestro newsletter!');
-            newsletterForm.reset();
-        });
-
-        // Smooth scroll para enlaces internos
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 70,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
+    <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/email.js"></script>
 </body>
 
 </html>
